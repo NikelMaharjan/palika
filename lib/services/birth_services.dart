@@ -74,7 +74,7 @@ class DartaServices {
     }
     on DioError catch(err) {
 
-      //print(err.response!.data['message']);
+      print(err.response);
       //return "${err.response!.data['message']}";
       return DioException.fromDioError(err).errorMessage ;
 
@@ -143,7 +143,7 @@ class DartaServices {
 
 
 
-     print(err.response!.data['message']);
+    // print(err.response!.data['message']);
 
 
 

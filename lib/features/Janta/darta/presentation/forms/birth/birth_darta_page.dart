@@ -552,7 +552,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                   ),
 
                   gapH10,
-                  _buildTextField(name: "married_registration_no", hint: "married registration number", labelName: "Married Registration Number", validation: "number", isNumeric: true),
+                  _buildTextField(name: "married_registration_no", hint: "married registration number", labelName: "Married Registration Number", validation: "citizenship", isNumeric: true),
 
                   _padding(label: "Married Date English"),
                   gapH7,
@@ -701,7 +701,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                         children: [
                           _buildWitnessDetails(name: "witness_full_name_np", label: "English Name", validation: "name", hintName: "English Name"),
                           _buildWitnessDetails(name: "witness_full_name_en", label: "Nepali Name", validation: "name", hintName: "Nepali Name"),
-                          _buildWitnessDetails(name: "witness_citizenship_no", label: "Citizenship number", validation: "name", hintName: "Citizenship no"),
+                          _buildWitnessDetails(name: "witness_citizenship_no", label: "Citizenship number", validation: "citizenship", hintName: "Citizenship no", isNumeric: true),
 
                           DropdownSearch<Provincee>(
                             validator: dropDownValidation,
@@ -1083,7 +1083,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                     return null;
                   }
 
-  Column _buildWitnessDetails({required String name, required String label, String? validation, required hintName}) => _buildTextField(name: name, hint: hintName, labelName: label, isTrue: true, validation: validation, );
+  Column _buildWitnessDetails({required String name, required String label, String? validation, bool? isNumeric, required hintName}) => _buildTextField(isNumeric: isNumeric, name: name, hint: hintName, labelName: label, isTrue: true, validation: validation, );
 
   Card _buildParentsDetails({
     required String firstName,

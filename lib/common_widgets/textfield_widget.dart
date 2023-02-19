@@ -53,7 +53,15 @@ class TextFieldWidget extends StatelessWidget {
 
                   ]
 
-              ): validation == "citizenship" ? FormBuilderValidators.compose(
+              ) : validation == "rowname" ? FormBuilderValidators.compose(
+                  [
+                    FormBuilderValidators.required(errorText: "required"),
+                    FormBuilderValidators.minLength(5, errorText: "5 character"),
+
+                  ]
+
+              ):
+              validation == "citizenship" ? FormBuilderValidators.compose(
                   [
                     FormBuilderValidators.required(errorText: "required"),
                     FormBuilderValidators.minLength(10, errorText: "10 character"),

@@ -1019,7 +1019,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                           name: "grandfather_full_name_en",
                           labelName: "English Name",
                           hintName: "english",
-                          validation: "name",
+                          validation: "rowname",
                           isTrue: true,
 
                         ),
@@ -1029,7 +1029,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                           labelName: "Nepali Name",
                           hintName: "nepali",
                           name: "grandfather_full_name_np",
-                          validation: "name",
+                          validation: "rowname",
                           isTrue: true,
 
                         ),
@@ -1046,20 +1046,20 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     children: [
                       Expanded(
                         child: TextFieldWidget(
-                          name: "father_full_name_np",
+                          name: "father_full_name_en",
                           labelName: "English Name",
                           hintName: "english",
-                          validation: "name",
+                          validation: "rowname",
                           isTrue: true,
 
                         ),
                       ),
                       Expanded(
                         child: TextFieldWidget(
-                          name: "father_full_name_en",
+                          name: "father_full_name_np",
                           labelName: "Nepali Name",
                           hintName: "nepali",
-                          validation: "name",
+                          validation: "rowname",
                           isTrue: true,
 
                         ),
@@ -1079,7 +1079,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                           name: "mother_full_name_en",
                           labelName: "English Name",
                           hintName: "english",
-                          validation: "name",
+                          validation: "rowname",
                           isTrue: true,
 
                         ),
@@ -1089,7 +1089,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                           labelName: "Nepali Name",
                           hintName: "nepali",
                           name: "mother_full_name_np",
-                          validation: "name",
+                          validation: "rowname",
                           isTrue: true,
 
                         ),
@@ -1110,7 +1110,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                           name: "spouse_full_name_en",
                           labelName: "English Name",
                           hintName: "english",
-                          validation: "name",
+                          validation: "rowname",
                           isTrue: true,
 
                         ),
@@ -1120,7 +1120,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                           labelName: "Nepali Name",
                           hintName: "nepali",
                           name: "spouse_full_name_np",
-                          validation: "name",
+                          validation: "rowname",
                           isTrue: true,
 
                         ),
@@ -1322,7 +1322,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                                 child: TextFieldWidget(
                                     name: "witness_full_name_en",
                                     labelName: "English Name",
-                                    validation: "name",
+                                    validation: "rowname",
                                     hintName: "english name",
                                     isTrue: true,
                                 ),
@@ -1332,7 +1332,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                                 child: TextFieldWidget(
                                   name: "witness_full_name_np",
                                   labelName: "Nepali Name",
-                                  validation: "name",
+                                  validation: "rowname",
                                   hintName: "nepali name",
                                   isTrue: true,
                                 ),
