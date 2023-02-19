@@ -804,6 +804,9 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
                     name: "reason",
                     options: [
                       FormBuilderFieldOption(value: "job", child: Text("Job"),),
+                      FormBuilderFieldOption(value: "bussiness", child: Text("Bussiness"),),
+                      FormBuilderFieldOption(value: "education", child: Text("Education"),),
+                      FormBuilderFieldOption(value: "other", child: Text("Others"),),
                     ],
                     decoration: InputDecoration(
                       enabledBorder: InputBorder.none,
@@ -874,6 +877,7 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
                     }
 
                     else{
+                      print("something");
                       Exceptions.failureShow(context, "some fields are not valid");
                       ref.read(validateProvider).enable();
                       ref.read(loadingProvider.notifier).toggle();

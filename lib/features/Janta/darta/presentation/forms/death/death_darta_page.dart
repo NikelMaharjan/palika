@@ -759,17 +759,16 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                   ),
 
 
-                  _padding(label: "Married Number"),
+                  _padding(label: "Married"),
 
 
                   FormBuilderRadioGroup(
                     validator: FormBuilderValidators.required(errorText: "Select one option"),
                     name: "is_married",
                     options: [
-                      FormBuilderFieldOption(value: 0, child: Text("0"),),
-                      FormBuilderFieldOption(value: 1, child: Text("1"),),
-                      FormBuilderFieldOption(value: 2, child: Text("2"),),
-                      FormBuilderFieldOption(value: 3, child: Text("3"),),
+                      FormBuilderFieldOption(value: 0, child: Text("True"),),
+                      FormBuilderFieldOption(value: 1, child: Text("False"),),
+
                     ],
                     decoration: InputDecoration(
                       enabledBorder: InputBorder.none,

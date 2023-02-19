@@ -341,7 +341,7 @@ class _FamilyMigrationDartaPageState extends ConsumerState<FamilyMigrationDartaP
                     options: [
                       FormBuilderFieldOption(value: "male", child: Text("Male"),),
                       FormBuilderFieldOption(value: "female", child: Text("Female"),),
-                      FormBuilderFieldOption(value: "others", child: Text("Others"),),
+                      FormBuilderFieldOption(value: "other", child: Text("Other"),),
                     ],
                     decoration: InputDecoration(
                       enabledBorder: InputBorder.none,

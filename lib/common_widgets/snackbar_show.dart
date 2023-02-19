@@ -1,4 +1,5 @@
 import 'package:palikaa/export_pages.dart';
+import 'package:palikaa/features/Janta/darta/presentation/darta_main_page.dart';
 
 
 
@@ -13,7 +14,19 @@ class Exceptions {
         backgroundColor: Colors.green,
         content: Text(message)
     ));
-    context.goNamed(AppRoute.home.name);
+
+
+  //  context.goNamed(AppRoute.darta.name);
+
+
+    Navigator.pop(
+      context,
+      MaterialPageRoute(builder: (context) =>  DartaMainScreen()),
+    );
+
+
+
+
   }
 
   static void noteShow(BuildContext context, String message) async{
@@ -45,6 +58,17 @@ class Exceptions {
         backgroundColor: Colors.red,
         content: Text(message)
     ));
+
+    // Navigator.pop(
+    //   context,
+    //   MaterialPageRoute(builder: (context) =>  DartaMainScreen()),
+    // );
+
+
+
+
+
+
   }
 
 

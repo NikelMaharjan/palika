@@ -37,7 +37,7 @@ class BirthDartaPage extends ConsumerStatefulWidget {
 class _BirthPageState extends ConsumerState<BirthDartaPage> {
   final _formKey = GlobalKey<FormBuilderState>();
 
-  final genderOptions = ["male", "female", "others"];
+  final genderOptions = ["male", "female", "other"];
 
   final educationOptions = ["10 ", "12 ", "Bachelor", "Master", "No "];
 
@@ -92,9 +92,9 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                   gapH10,
 
 
-                  _buildTextField(name: "name_en", hint: "English Name", labelName: "English Name", validation: "name"),
+                  _buildTextField(name: "name_en", hint: "english Name", labelName: "English Name", validation: "name"),
 
-                  _buildTextField(name: "name_np", hint: "Nepali Name", labelName: "Nepali Name", validation: "name"),
+                  _buildTextField(name: "name_np", hint: "nepali Name", labelName: "Nepali Name", validation: "name"),
 
                   _padding(label: "Birth Place"),
 
@@ -102,10 +102,13 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                       validator: FormBuilderValidators.required(errorText: "Select one option"),
                       name: "birth_place",
                       options: [
-                        FormBuilderFieldOption(value: "house", child: Text("house"),),
+                        FormBuilderFieldOption(value: "house", child: Text("House"),),
+                        FormBuilderFieldOption(value: "hospital", child: Text("Hospital"),),
+                        FormBuilderFieldOption(value: "other", child: Text("Other"),),
                       ],
                     decoration: InputDecoration(
                       enabledBorder: InputBorder.none,
+
                     ),
                   ),
 
@@ -117,7 +120,11 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                       validator: FormBuilderValidators.required(errorText: "Select one option"),
                       name: "birth_assistant",
                       options: [
-                        FormBuilderFieldOption(value: "family", child: Text("family"),),
+                        FormBuilderFieldOption(value: "family", child: Text("Family"),),
+                        FormBuilderFieldOption(value: "nurse", child: Text("Nurse"),),
+                        FormBuilderFieldOption(value: "health worker", child: Text("Health Workers"),),
+                        FormBuilderFieldOption(value: "doctor", child: Text("Doctor"),),
+                        FormBuilderFieldOption(value: "other", child: Text("Others"),),
                       ],
                     decoration: InputDecoration(
                       enabledBorder: InputBorder.none,
@@ -188,7 +195,9 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                       validator: FormBuilderValidators.required(errorText: "Select one option"),
                       name: "birth_type",
                       options: [
-                        FormBuilderFieldOption(value: "one", child: Text("1"),),
+                        FormBuilderFieldOption(value: "one", child: Text("One"),),
+                        FormBuilderFieldOption(value: "twins", child: Text("Twins"),),
+                        FormBuilderFieldOption(value: "more than there", child: Text("More than 3"),),
                       ],
                     decoration: InputDecoration(
                       enabledBorder: InputBorder.none,
@@ -479,9 +488,9 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                   Row(
                     children: [
 
-                      _buildRowsField(name: "grandfather_first_name", hint: "First", label: "First Name", validation: "row"),
-                      _buildRowsField(name: "grandfather_middle_name", hint: "Middle", label: "Middle Name", validation: "row"),
-                      _buildRowsField(name: "grandfather_last_name", hint: "Last", label: "Last Name", validation: "row"),
+                      _buildRowsField(name: "grandfather_first_name", hint: "first", label: "First Name", validation: "row"),
+                      _buildRowsField(name: "grandfather_middle_name", hint: "middle", label: "Middle Name", validation: "row"),
+                      _buildRowsField(name: "grandfather_last_name", hint: "last", label: "Last Name", validation: "row"),
 
                     ],
                   ),
@@ -492,10 +501,6 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                   _padding(label: "Father Details"),
 
                   gapH10,
-
-
-
-
 
 
 
@@ -618,9 +623,10 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                       validator: FormBuilderValidators.required(errorText: "Select one option"),
                       name: "total_birth_child",
                       options: [
-                        FormBuilderFieldOption(value: 1, child: Text("one"),),
-                        FormBuilderFieldOption(value: 2, child: Text("two"),),
-                        FormBuilderFieldOption(value: 3, child: Text("three"),),
+                        FormBuilderFieldOption(value: 1, child: Text("1"),),
+                        FormBuilderFieldOption(value: 2, child: Text("2"),),
+                        FormBuilderFieldOption(value: 3, child: Text("3"),),
+                        FormBuilderFieldOption(value: 4, child: Text("4"),),
                       ],
                     decoration: InputDecoration(
                       enabledBorder: InputBorder.none,
@@ -637,9 +643,10 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                       validator: FormBuilderValidators.required(errorText: "Select one option"),
                       name: "total_alive_child",
                       options: [
-                        FormBuilderFieldOption(value: 1, child: Text("one"),),
-                        FormBuilderFieldOption(value: 2, child: Text("two"),),
-                        FormBuilderFieldOption(value: 3, child: Text("three"),),
+                        FormBuilderFieldOption(value: 1, child: Text("1"),),
+                        FormBuilderFieldOption(value: 2, child: Text("2"),),
+                        FormBuilderFieldOption(value: 3, child: Text("3"),),
+                        FormBuilderFieldOption(value: 4, child: Text("4"),),
                       ],
                     decoration: InputDecoration(
                       enabledBorder: InputBorder.none,
@@ -1117,9 +1124,9 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                         Row(
                           children: [
 
-                            _buildRowsField(name: firstName, hint: "First", label: "First Name", validation: "row"),
-                            _buildRowsField(name: middleName, hint: "Middle", label: "Middle Name", validation: "row"),
-                            _buildRowsField(name: lastName, hint: "Last", label: "Last Name", validation: "row"),
+                            _buildRowsField(name: firstName, hint: "first", label: "First Name", validation: "row"),
+                            _buildRowsField(name: middleName, hint: "middle", label: "Middle Name", validation: "row"),
+                            _buildRowsField(name: lastName, hint: "last", label: "Last Name", validation: "row"),
 
                           ],
                         ),
@@ -1376,7 +1383,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                             ),
 
                             Flexible(
-                              child: _buildTextField(name: ageName, hint: "age", labelName: "Age", isTrue: true, validation: "number", isNumeric: true),
+                              child: _buildTextField(name: ageName, hint: "age", labelName: "Age", isTrue: true, validation: "age", isNumeric: true),
                             ),
 
 
@@ -1522,7 +1529,15 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
 
                   ]
 
-              ): validation == "citizenship" ? FormBuilderValidators.compose(
+              ): validation == "age" ? FormBuilderValidators.compose(
+                  [
+                    FormBuilderValidators.required(errorText: "required"),
+                    FormBuilderValidators.minLength(2, errorText: "2 character"),
+
+                  ]
+
+              )
+                  : validation == "citizenship" ? FormBuilderValidators.compose(
                   [
                     FormBuilderValidators.required(errorText: "required"),
                     FormBuilderValidators.minLength(10, errorText: "10 character"),
