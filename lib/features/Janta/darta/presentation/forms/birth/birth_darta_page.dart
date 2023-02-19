@@ -22,9 +22,9 @@ import 'package:palikaa/models/location_model.dart';
 import 'dart:developer' as logDev;
 
 
-import 'api_exceptions.dart';
-import 'features/Janta/darta/data/dummy_data.dart';
-import 'features/Janta/darta/presentation/forms/marriage/man_bibaran.dart';
+import '../../../../../../api_exceptions.dart';
+import '../../../data/dummy_data.dart';
+import '../marriage/man_bibaran.dart';
 
 class BirthDartaPage extends ConsumerStatefulWidget {
 

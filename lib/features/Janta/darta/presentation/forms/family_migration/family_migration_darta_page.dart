@@ -13,16 +13,16 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:palikaa/common_widgets/snackbar_show.dart';
 import 'package:palikaa/common_widgets/textfield_widget.dart';
 import 'package:palikaa/core/shared/common_provider.dart';
-import 'package:palikaa/migration_darta_page.dart';
+import 'package:palikaa/features/Janta/darta/presentation/forms/migration/migration_darta_page.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:palikaa/providers/form_validation_provider.dart';
 import 'package:palikaa/services/birth_services.dart';
 
 
-import 'constants/app_sizes.dart';
-import 'constants/colors.dart';
-import 'features/Janta/darta/presentation/forms/marriage/man_bibaran.dart';
-import 'models/location_model.dart';
+import '../../../../../../constants/app_sizes.dart';
+import '../../../../../../constants/colors.dart';
+import '../marriage/man_bibaran.dart';
+import '../../../../../../models/location_model.dart';
 
 class FamilyMigrationDartaPage extends ConsumerStatefulWidget {
   const FamilyMigrationDartaPage({Key? key}) : super(key: key);
@@ -56,7 +56,7 @@ class _FamilyMigrationDartaPageState extends ConsumerState<FamilyMigrationDartaP
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
@@ -152,183 +152,178 @@ class _FamilyMigrationDartaPageState extends ConsumerState<FamilyMigrationDartaP
                   gapH10,
 
 
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
+                  Column(
+                    children: [
 
-                          DropdownSearch<Provincee>(
-                            validator: dropDownValidation,
-                            asyncItems: (String filter) async {
-                              try{
-                                final response = await Dio().get(
-                                  "https://test.digitalpalika.org/api/provinces",
-                                );
-                                final models = (response.data as List).map((e) => Provincee.fromJson(e)).toList();
-                                return models;
-                              }on DioError catch(err){
-                                throw 'something went wrong';
-                              }
+                      DropdownSearch<Provincee>(
+                        validator: dropDownValidation,
+                        asyncItems: (String filter) async {
+                          try{
+                            final response = await Dio().get(
+                              "https://test.digitalpalika.org/api/provinces",
+                            );
+                            final models = (response.data as List).map((e) => Provincee.fromJson(e)).toList();
+                            return models;
+                          }on DioError catch(err){
+                            throw 'something went wrong';
+                          }
 
-                            },
+                        },
 
-                            dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(0),
-                                label: Text("Province"),
-                                hintText: "select province",
-                                floatingLabelStyle: TextStyle(color: primaryColor)
-                              ),
-                            ),
-
-                            onChanged: (Provincee? data) {
-                              print("Citizenship Province id is ${data!.id}");
-
-                              setState(() {
-                                pzone = data;
-                              });
-                            },
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                          dropdownSearchDecoration: InputDecoration(
+                            contentPadding: EdgeInsets.all(0),
+                            label: Text("Province"),
+                            hintText: "select province",
+                            floatingLabelStyle: TextStyle(color: primaryColor)
                           ),
+                        ),
 
-                          gapH10,
+                        onChanged: (Provincee? data) {
+                          print("Citizenship Province id is ${data!.id}");
 
-
-
-
-
-
-
-                          DropdownSearch<Districtt>(
-
-                            validator: dropDownValidation,
-
-                            asyncItems: (String filter) async {
-                              try{
-                                final response = await Dio().get(
-                                    "https://test.digitalpalika.org/api/province/${pzone.id}/districts"
-                                );
-                                final models = (response.data as List).map((e) => Districtt.fromJson(e)).toList();
-                                return models;
-                              }on DioError catch(err){
-                                throw 'something went wrong';
-                              }
-
-
-                            },
-
-                            dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                  floatingLabelStyle: TextStyle(color: primaryColor),
-                                  contentPadding: EdgeInsets.all(0),
-                                label: Text("District"),
-                                hintText: "select district",
-                              ),
-                            ),
-                            enabled: pzone.en_name.isEmpty ? false : true,
-                            onChanged: (Districtt? data) {
-                              print("Citizenship District id is ${data!.id}");
-
-                              setState(() {
-                                pdistrict = data;
-                              });
-                            },
-                          ),
-
-                          gapH10,
-
-
-
-
-                          DropdownSearch<Municipalities>(
-
-                            validator: dropDownValidation,
-
-                            asyncItems: (String filter) async {
-                              try{
-                                final response = await Dio().get(
-                                    "https://test.digitalpalika.org/api/district/${pdistrict.id}/muncipalities"
-                                );
-                                final models = (response.data as List).map((e) => Municipalities.fromJson(e)).toList();
-                                return models;
-                              }on DioError catch(err){
-                                throw 'something went wrong';
-                              }
-
-
-                            },
-
-                            dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                floatingLabelStyle: TextStyle(color: primaryColor),
-                                contentPadding: EdgeInsets.all(0),
-                                label: Text("Municipality"),
-                                hintText: "select municipality",
-                              ),
-                            ),
-
-                            enabled: pdistrict.np_name.isEmpty ? false : true,
-
-                            onChanged: (Municipalities? data) {
-                              print("Citizenship Municipality district id is ${data!.district_id}");
-
-                              setState(() {
-                                pMunici = data;
-                              });
-
-                            },
-
-
-                          ),
-
-                          gapH10,
-
-
-
-                          DropdownSearch<Wardd>(
-
-
-                            validator: dropDownValidation,
-
-
-                            asyncItems: (String filter) async {
-                              try{
-                                final response = await Dio().get(
-                                  // "https://test.digitalpalika.org/api/muncipality/1/wards"
-
-                                    "https://test.digitalpalika.org/api/muncipality/${pMunici.id}/wards"
-                                );
-                                final models = (response.data as List).map((e) => Wardd.fromJson(e)).toList();
-                                return models;
-                              }on DioError catch(err){
-                                throw 'something went wrong';
-                              }
-
-
-                            },
-
-                            dropdownDecoratorProps: DropDownDecoratorProps(
-                              dropdownSearchDecoration: InputDecoration(
-                                floatingLabelStyle: TextStyle(color: primaryColor),
-                                contentPadding: EdgeInsets.all(0),
-                                label: Text("Ward"),
-                                hintText: "Select ward number",
-                              ),
-                            ),
-
-                            enabled: pMunici.np_name.isEmpty ? false : true,
-
-
-                            onChanged: (Wardd? data) {
-                              pWard = data!;
-                            },
-
-                          ),
-
-                          // need to select district id imppp
-                        ],
+                          setState(() {
+                            pzone = data;
+                          });
+                        },
                       ),
-                    ),
+
+                      gapH10,
+
+
+
+
+
+
+
+                      DropdownSearch<Districtt>(
+
+                        validator: dropDownValidation,
+
+                        asyncItems: (String filter) async {
+                          try{
+                            final response = await Dio().get(
+                                "https://test.digitalpalika.org/api/province/${pzone.id}/districts"
+                            );
+                            final models = (response.data as List).map((e) => Districtt.fromJson(e)).toList();
+                            return models;
+                          }on DioError catch(err){
+                            throw 'something went wrong';
+                          }
+
+
+                        },
+
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                          dropdownSearchDecoration: InputDecoration(
+                              floatingLabelStyle: TextStyle(color: primaryColor),
+                              contentPadding: EdgeInsets.all(0),
+                            label: Text("District"),
+                            hintText: "select district",
+                          ),
+                        ),
+                        enabled: pzone.en_name.isEmpty ? false : true,
+                        onChanged: (Districtt? data) {
+                          print("Citizenship District id is ${data!.id}");
+
+                          setState(() {
+                            pdistrict = data;
+                          });
+                        },
+                      ),
+
+                      gapH10,
+
+
+
+
+                      DropdownSearch<Municipalities>(
+
+                        validator: dropDownValidation,
+
+                        asyncItems: (String filter) async {
+                          try{
+                            final response = await Dio().get(
+                                "https://test.digitalpalika.org/api/district/${pdistrict.id}/muncipalities"
+                            );
+                            final models = (response.data as List).map((e) => Municipalities.fromJson(e)).toList();
+                            return models;
+                          }on DioError catch(err){
+                            throw 'something went wrong';
+                          }
+
+
+                        },
+
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                          dropdownSearchDecoration: InputDecoration(
+                            floatingLabelStyle: TextStyle(color: primaryColor),
+                            contentPadding: EdgeInsets.all(0),
+                            label: Text("Municipality"),
+                            hintText: "select municipality",
+                          ),
+                        ),
+
+                        enabled: pdistrict.np_name.isEmpty ? false : true,
+
+                        onChanged: (Municipalities? data) {
+                          print("Citizenship Municipality district id is ${data!.district_id}");
+
+                          setState(() {
+                            pMunici = data;
+                          });
+
+                        },
+
+
+                      ),
+
+                      gapH10,
+
+
+
+                      DropdownSearch<Wardd>(
+
+
+                        validator: dropDownValidation,
+
+
+                        asyncItems: (String filter) async {
+                          try{
+                            final response = await Dio().get(
+                              // "https://test.digitalpalika.org/api/muncipality/1/wards"
+
+                                "https://test.digitalpalika.org/api/muncipality/${pMunici.id}/wards"
+                            );
+                            final models = (response.data as List).map((e) => Wardd.fromJson(e)).toList();
+                            return models;
+                          }on DioError catch(err){
+                            throw 'something went wrong';
+                          }
+
+
+                        },
+
+                        dropdownDecoratorProps: DropDownDecoratorProps(
+                          dropdownSearchDecoration: InputDecoration(
+                            floatingLabelStyle: TextStyle(color: primaryColor),
+                            contentPadding: EdgeInsets.all(0),
+                            label: Text("Ward"),
+                            hintText: "Select ward number",
+                          ),
+                        ),
+
+                        enabled: pMunici.np_name.isEmpty ? false : true,
+
+
+                        onChanged: (Wardd? data) {
+                          pWard = data!;
+                        },
+
+                      ),
+
+                      // need to select district id imppp
+                    ],
                   ),
 
 

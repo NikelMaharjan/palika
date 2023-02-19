@@ -1,6 +1,12 @@
 
 
 enum AppRoute{
+  birth,
+  death,
+  migration,
+  familymigration,
+  karmachari,
+  pratinidhi,
   root,
   home,
   search,

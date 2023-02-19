@@ -4,7 +4,7 @@ import '../../../../export_pages.dart';
 const List dartaData = [
 
   {
-    'label': 'Birth Page',
+    'label': 'Birth',
     'bgColor': '0xFFEBF5F3',
     'iconPath': 'assets/citizenIcon/basobas.png',
     'borderColor': '0xFFC7E0DB',
@@ -14,9 +14,9 @@ const List dartaData = [
 
 
   {
-    'label': 'Death Page',
+    'label': 'Death',
     'bgColor': '0xFFEBF5F3',
-    'iconPath': 'assets/citizenIcon/basobas.png',
+    'iconPath': 'assets/citizenIcon/death.png',
     'borderColor': '0xFFC7E0DB',
     'styles': '0xFF898989',
     'iconColor': '0xFF44A64B'
@@ -24,18 +24,36 @@ const List dartaData = [
 
 
   {
-    'label': 'Migration Page',
+    'label': 'Migration',
     'bgColor': '0xFFEBF5F3',
-    'iconPath': 'assets/citizenIcon/basobas.png',
+    'iconPath': 'assets/citizenIcon/migration.png',
     'borderColor': '0xFFC7E0DB',
     'styles': '0xFF898989',
     'iconColor': '0xFF44A64B'
   },
 
   {
-    'label': 'Migration Family Page',
+    'label': 'Migration Family',
     'bgColor': '0xFFEBF5F3',
-    'iconPath': 'assets/citizenIcon/basobas.png',
+    'iconPath': 'assets/citizenIcon/familymigration.png',
+    'borderColor': '0xFFC7E0DB',
+    'styles': '0xFF898989',
+    'iconColor': '0xFF44A64B'
+  },
+
+  {
+    'label': 'Karmachari',
+    'bgColor': '0xFFEBF5F3',
+    'iconPath': 'assets/citizenIcon/karmachari.png',
+    'borderColor': '0xFFC7E0DB',
+    'styles': '0xFF898989',
+    'iconColor': '0xFF44A64B'
+  },
+
+  {
+    'label': 'Pratinidhi',
+    'bgColor': '0xFFEBF5F3',
+    'iconPath': 'assets/citizenIcon/pratinidhi.png',
     'borderColor': '0xFFC7E0DB',
     'styles': '0xFF898989',
     'iconColor': '0xFF44A64B'

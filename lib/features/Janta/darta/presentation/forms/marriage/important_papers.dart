@@ -7,6 +7,13 @@ import '../../../../oda_patra/presentation/important_papers_page.dart';
 class ImportantPapers1 extends StatelessWidget {
 
 
+
+  String birth;
+  ImportantPapers1(this.birth);
+
+
+
+
   @override
   Widget build(BuildContext context) {
     TextStyle headStyle = TextStyles.labelStyle1;
@@ -31,6 +38,7 @@ class ImportantPapers1 extends StatelessWidget {
               children: [
                 ElevatedButton(
                     onPressed: (){
+                   //  context.pushNamed(AppRoute.birth.name);
                       context.pushNamed(AppRoute.main.name);
                     }, child: Text('विवाह दर्ता फारम मा जनुहोस ', style: TextStyle(fontSize: 17.sp),)),
                 SizedBox(height: 20,),

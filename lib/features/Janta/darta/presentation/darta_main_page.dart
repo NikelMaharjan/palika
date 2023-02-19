@@ -1,8 +1,10 @@
-import 'package:palikaa/birth_darta_page.dart';
-import 'package:palikaa/death_darta_page.dart';
+import 'package:palikaa/features/Janta/darta/presentation/forms/birth/birth_darta_page.dart';
+import 'package:palikaa/features/Janta/darta/presentation/forms/death/death_darta_page.dart';
 import 'package:palikaa/features/Janta/darta/data/darta_model_data.dart';
-import 'package:palikaa/migration_darta_page.dart';
-import 'package:palikaa/family_mogration_darta_page.dart';
+import 'package:palikaa/karmachari_darta_page.dart';
+import 'package:palikaa/features/Janta/darta/presentation/forms/migration/migration_darta_page.dart';
+import 'package:palikaa/features/Janta/darta/presentation/forms/family_migration/family_migration_darta_page.dart';
+import 'package:palikaa/pratinidhi_darta_page.dart';
 
 import '../../../../export_pages.dart';
 
@@ -25,13 +27,21 @@ class DartaMainScreen extends ConsumerWidget {
           itemCount: odaPatraList.length,
           itemBuilder: (context, index){
             final data = dartaList[index];
+
+
             return InkWell(
 
-              //onTap: () => data.onTap!(context),
+       //       onTap: () => data.onTap!(context),
+
+
+
+
+
 
               onTap: () {
                 switch (index) {
                   case 0:
+                   // context.pushNamed(AppRoute.birth.name);
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) =>  BirthDartaPage()),
@@ -53,12 +63,24 @@ class DartaMainScreen extends ConsumerWidget {
                     break;
 
                   case 3:
-
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) =>  FamilyMigrationDartaPage()),
                     );
                     break;
+
+                  case 4:
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  KarmachariDartaPage()),
+                    );
+                    break;
+
+                  case 5:
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) =>  PratinidhiDartaPage()),
+                    );
 
 
 

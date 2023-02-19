@@ -1,9 +1,10 @@
-import 'package:palikaa/birth_darta_page.dart';
-import 'package:palikaa/death_darta_page.dart';
+import 'package:palikaa/features/Janta/darta/presentation/forms/birth/birth_darta_page.dart';
+import 'package:palikaa/features/Janta/darta/presentation/forms/death/death_darta_page.dart';
 import 'package:palikaa/features/main/home/home_page.dart';
 import 'package:palikaa/karmachari_darta_page.dart';
-import 'package:palikaa/migration_darta_page.dart';
-import 'package:palikaa/family_mogration_darta_page.dart';
+import 'package:palikaa/features/Janta/darta/presentation/forms/migration/migration_darta_page.dart';
+import 'package:palikaa/features/Janta/darta/presentation/forms/family_migration/family_migration_darta_page.dart';
+import 'package:palikaa/pratinidhi_darta_page.dart';
 
 import '../export_pages.dart';
 import '../features/Janta/darta/presentation/darta_main_page.dart';
@@ -28,8 +29,8 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         GoRoute(
             path: '/',
             name: AppRoute.home.name,
-            builder: (context, state) => KarmachariDartaPage(),
-            // builder: (context, state) => HomeScreen(),
+            // builder: (context, state) => KarmachariDartaPage(),
+             builder: (context, state) => HomeScreen(),
 
             routes: [
               GoRoute(
@@ -67,10 +68,18 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                     name: AppRoute.main.name,
                     builder: (context, state) => BibahaBibaran(),
                   ),
+
+                  GoRoute(
+                    path: 'birth',
+                    name: AppRoute.birth.name,
+                    builder: (context, state) => BirthDartaPage(),
+                  ),
+
+
                   GoRoute(
                     path: 'papers',
                     name: AppRoute.papers.name,
-                    builder: (context, state) =>   ImportantPapers1(),
+                    builder: (context, state) =>   ImportantPapers1(""),
                   ),
                 ]
               ),

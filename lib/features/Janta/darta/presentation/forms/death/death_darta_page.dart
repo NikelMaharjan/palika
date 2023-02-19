@@ -18,8 +18,8 @@ import 'package:palikaa/models/location_model.dart';
 import 'package:palikaa/providers/form_validation_provider.dart';
 import 'package:palikaa/services/birth_services.dart';
 
-import 'core/shared/common_provider.dart';
-import 'features/Janta/darta/presentation/forms/marriage/man_bibaran.dart';
+import '../../../../../../core/shared/common_provider.dart';
+import '../marriage/man_bibaran.dart';
 
 class DeathDartaPage extends ConsumerStatefulWidget {
   const DeathDartaPage({Key? key}) : super(key: key);

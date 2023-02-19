@@ -1,9 +1,11 @@
 
 
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_file_picker/form_builder_file_picker.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:palikaa/common_widgets/textfield_widget.dart';
@@ -15,16 +17,18 @@ import 'package:form_builder_image_picker/form_builder_image_picker.dart';
 import 'package:palikaa/providers/form_validation_provider.dart';
 import 'package:palikaa/services/birth_services.dart';
 
+import 'features/Janta/darta/presentation/forms/marriage/man_bibaran.dart';
 
 
-class KarmachariDartaPage extends ConsumerStatefulWidget {
-  const KarmachariDartaPage({Key? key}) : super(key: key);
+
+class PratinidhiDartaPage extends ConsumerStatefulWidget {
+  const PratinidhiDartaPage({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<KarmachariDartaPage> createState() => _KarmachariDartaPageState();
+  ConsumerState<PratinidhiDartaPage> createState() => _PratinidhiDartaPageState();
 }
 
-class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
+class _PratinidhiDartaPageState extends ConsumerState<PratinidhiDartaPage> {
 
   final _formKey = GlobalKey<FormBuilderState>();
 
@@ -35,6 +39,7 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
 
 
   XFile? image;
+  PlatformFile? file;
 
   @override
   Widget build(BuildContext context) {
@@ -55,16 +60,16 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
                 children: [
 
 
-                  _padding(label: "Karmachari Darta Page", isHeading: true ),
+                  _padding(label: "Pratinidhi Darta Page", isHeading: true ),
 
                   gapH10,
-                  
-                  
+
+
                   Row(
                     children: [
                       Expanded(
                         child: TextFieldWidget(
-                            name: "dp_karmachari_first_name",
+                            name: "dp_pratinidhi_first_name",
                             labelName: "First Name",
                             hintName: "first name",
                             validation: "row"
@@ -73,7 +78,7 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
 
                       Expanded(
                         child: TextFieldWidget(
-                            name: "dp_karmachari_middle_name",
+                            name: "dp_pratinidhi_middle_name",
                             labelName: "Middle Name",
                             hintName: "middle name",
                             validation: "row"
@@ -82,7 +87,7 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
 
                       Expanded(
                         child: TextFieldWidget(
-                            name: "dp_karmachari_last_name",
+                            name: "dp_pratinidhi_last_name",
                             labelName: "Last Name",
                             hintName: "last name",
                             validation: "row"
@@ -97,7 +102,7 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
 
                       Expanded(
                         child: TextFieldWidget(
-                            name: "dp_karmachari_designation",
+                            name: "dp_pratinidhi_designation",
                             labelName: "Designation",
                             hintName: "CEO",
                             validation: "row"
@@ -107,7 +112,7 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
 
                       Expanded(
                         child: TextFieldWidget(
-                          name: "dp_karmachari_phone_number",
+                          name: "dp_pratinidhi_contact",
                           labelName: "Phone Number",
                           hintName: "phone no",
                           validation: "citizenship",
@@ -118,7 +123,53 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
                     ],
                   ),
 
-                  
+
+
+                  _padding(label: "Date of birth"),
+                  gapH7,
+
+
+
+                  FormBuilderDateTimePicker(
+                      validator: FormBuilderValidators.required(),
+                      name: "dp_pratinidhi_dob",
+                      inputType: InputType.date,
+                      initialEntryMode: DatePickerEntryMode.calendarOnly,
+                      format: DateFormat('yyyy/dd/MM'),
+                      decoration: InputDecoration(
+                        hintText: "english date",
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                        errorStyle:  TextStyle(fontSize: 13.sp),
+
+                        errorBorder:  OutlineInputBorder(
+                          borderSide:  BorderSide(color: Colors.red, width: 0.0),
+                        ),
+
+                        hintStyle: formHintStyle,
+                        border: const OutlineInputBorder(),
+                      )
+
+                  ),
+
+                  gapH10,
+
+
+                  _padding(label: "Gender"),
+
+                  FormBuilderRadioGroup(
+                    validator: FormBuilderValidators.required(errorText: "Select one option"),
+                    name: "dp_pratinidhi_gender",
+                    options: [
+                      FormBuilderFieldOption(value: "male", child: Text("Male"),),
+                      FormBuilderFieldOption(value: "female", child: Text("Female"),),
+                      FormBuilderFieldOption(value: "other", child: Text("Others"),),
+                    ],
+                    decoration: InputDecoration(
+                      enabledBorder: InputBorder.none,
+                    ),
+                  ),
+
+
 
 
                   _padding(label: "Select Location"),
@@ -313,27 +364,55 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
 
                   FormBuilderImagePicker(
                     validator: FormBuilderValidators.required(),
-                    name: 'dp_karmachari_profile_pic',
-                    fit: BoxFit.fitWidth,
+                    name: 'dp_pratinidhi_profile_pic',
                     maxImages: 1,
 
 
                   ),
+
+
+                  FormBuilderFilePicker(
+                    validator: FormBuilderValidators.required(),
+                    name: "dp_pratinidhi_parichayapatra_file",
+                    maxFiles: 1,
+                    onChanged: (val) => print(val),
+                    typeSelectors: [
+                      TypeSelector(
+                        type: FileType.any,
+                        selector: Row(
+                          children: [
+                            Icon(Icons.add),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: _padding(label: "Add Files"),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                    onFileLoading: (val) {
+                      print(val);
+                    },
+                  ),
+
+
+                  //
                   //
                   // InkWell(
                   //   onTap: () async{
-                  //     ImagePicker picker = ImagePicker();
-                  //     imagePicker = await picker.pickImage(source: ImageSource.gallery);
                   //
-                  //     print("imagePicker is $imagePicker");
+                  //
+                  //     FilePickerResult? result = await FilePicker.platform.pickFiles();
+                  //
+                  //     if (result != null) {
+                  //       File file =  File(result.files.single.path);
+                  //     }
+                  //
                   //
                   //   },
-                  //   child: Container(
-                  //     color: primaryColor,
-                  //     height: 100,
-                  //
-                  //   ),
+                  //     child: _padding(label: "Select File")
                   // ),
+
 
 
                   gapH10,
@@ -347,65 +426,75 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
                     final formData = _formKey.currentState!.value;
                     final newData = Map.of(formData);
 
-
-
-                    final response = await DartaServices.addkarmachari();
-
-
-
-                    //  if(_formKey.currentState!.validate()){
-                   //
-                   //   // print(formData['dp_karmachari_profile_pic'].runtimeType);
-                   //
-                   //
-                   //    formData['dp_karmachari_profile_pic'].forEach((element) {
-                   //      image = element;
-                   //      print("formatImage is $image");
-                   //    });
-                   //
-                   //
-                   //    newData.update("dp_karmachari_profile_pic", (value) => image);
-                   //    newData['dp_wada_id'] = pWardB.id;
-                   //
-                   //    //need to edit this and send imppppppppppppppppp
-                   //    newData['dp_karmachari_type_id'] = 1;
-                   //    //need to edit this and send imppppppppppppppppp
-                   //
-                   //    final response = await DartaServices.addkarmachari();
-                   //
-                   //
-                   //
-                   //
-                   //    if(response == "success"){
-                   //
-                   //      ref.read(loadingProvider.notifier).toggle();
-                   //      Exceptions.successShow(context, "successfully added");
-                   //    }
-                   //
-                   //
-                   //    if(response != "success"){
-                   //      ref.read(loadingProvider.notifier).toggle();
-                   //      Exceptions.failureShow(context, response);
-                   //
-                   //    }
-                   //
-                   //
-                   //
-                   //
-                   // }
-                   //
-                   //
-                   //  else{
-                   //    Exceptions.failureShow(context, "some fields are not valid");
-                   //    ref.read(validateProvider).enable();
-                   //    ref.read(loadingProvider.notifier).toggle();
-                   //
-                   //
-                   //  }
+                
 
 
 
-                   }, child: Text("Submit"))
+
+
+
+                    if(_formKey.currentState!.validate()){
+
+                       print(formData['dp_pratinidhi_parichayapatra_file']);
+
+                       formData['dp_pratinidhi_parichayapatra_file'].forEach((element) {
+                        file = element;
+                      });
+                      
+                      print("FIle is $file");
+                      
+                      newData.update("dp_pratinidhi_parichayapatra_file", (value) => file);
+
+
+                      final formatDate1 = DateFormat('yyyy/MM/dd').format(formData["dp_pratinidhi_dob"]);
+
+
+                      newData.update("dp_pratinidhi_dob", (value) => formatDate1);
+
+                      List imageList =  formData['dp_pratinidhi_profile_pic'];
+                      imageList.forEach((element) {
+                        image = element;
+                        print("formatImage is $image");
+                      });
+
+
+                      newData.update("dp_pratinidhi_profile_pic", (value) => image);
+                      newData['dp_wada_id'] = pWardB.id;
+
+                  
+
+                      final response = await DartaServices.addPratinidhi(newData);
+
+                      if(response == "success"){
+
+                        ref.read(loadingProvider.notifier).toggle();
+                        Exceptions.successShow(context, "successfully added");
+                      }
+
+
+                      if(response != "success"){
+                        ref.read(loadingProvider.notifier).toggle();
+                        Exceptions.failureShow(context, response);
+
+                      }
+
+
+
+
+                    }
+
+
+                    else{
+                      Exceptions.failureShow(context, "some fields are not valid");
+                       ref.read(validateProvider).enable();
+                      ref.read(loadingProvider.notifier).toggle();
+
+
+                    }
+
+
+
+                  }, child: Text("Submit"))
 
 
 
