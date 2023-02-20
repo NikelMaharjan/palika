@@ -365,28 +365,39 @@ class _FamilyMigrationDartaPageState extends ConsumerState<FamilyMigrationDartaP
                     ],
                     decoration: InputDecoration(
                       enabledBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.only(bottom: 0, top: 10),
                     ),
                   ),
 
 
-                  gapH14,
 
-                  _padding(label: "Will Migrate"),
+                  // _padding(label: "Will Migrate"),
+                  //
+                  //
+                  // FormBuilderRadioGroup(
+                  //   validator: FormBuilderValidators.required(errorText: "Select one option"),
+                  //   name: "will_migrate",
+                  //   options: [
+                  //     FormBuilderFieldOption(value: true, child: Text("True"),),
+                  //     FormBuilderFieldOption(value: false, child: Text("False"),),
+                  //   ],
+                  //   decoration: InputDecoration(
+                  //     enabledBorder: InputBorder.none,
+                  //   ),
+                  // ),
+                  //
+                  // gapH10,
 
-
-                  FormBuilderRadioGroup(
-                    validator: FormBuilderValidators.required(errorText: "Select one option"),
-                    name: "will_migrate",
-                    options: [
-                      FormBuilderFieldOption(value: true, child: Text("True"),),
-                      FormBuilderFieldOption(value: false, child: Text("False"),),
-                    ],
-                    decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                    ),
+                  FormBuilderSwitch(
+                      name: "will_migrate",
+                      initialValue: false,
+                      activeColor: primaryColor,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(bottom: 10)
+                      ),
+                      title: _padding(label: "Will Migrate")
                   ),
 
-                  gapH10,
 
                   ElevatedButton(onPressed:  isLoad ? null : () async {
 
@@ -400,8 +411,6 @@ class _FamilyMigrationDartaPageState extends ConsumerState<FamilyMigrationDartaP
                     final newData = Map.of(formData);
 
                     newData['district_id'] = pdistrict.id;
-
-
 
 
 
