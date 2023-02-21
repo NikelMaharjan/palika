@@ -113,6 +113,9 @@ class _HomeState extends State<Home> {
                       );
                     },
                     theme: ThemeData(
+                      primarySwatch: Colors.green,
+                      unselectedWidgetColor: Colors.grey,
+
                       visualDensity: VisualDensity.adaptivePlatformDensity,
                       scaffoldBackgroundColor: backgroundColor,
                     ).copyWith(

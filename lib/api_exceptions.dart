@@ -1,5 +1,3 @@
-
-
 import 'package:dio/dio.dart';
 
 class DioException implements Exception {
@@ -10,8 +8,8 @@ class DioException implements Exception {
       case DioErrorType.cancel:
         errorMessage = 'Request to the server was cancelled.';
         break;
-      case DioErrorType.connectTimeout:
-        errorMessage = 'Connection timed out.';
+      case DioErrorType.connectionTimeout:
+        errorMessage = 'Check your phone data internet';
         break;
       case DioErrorType.receiveTimeout:
         errorMessage = 'Receiving timeout occurred.';
@@ -19,12 +17,13 @@ class DioException implements Exception {
       case DioErrorType.sendTimeout:
         errorMessage = 'Request send timeout.';
         break;
-      case DioErrorType.response:
+      case DioErrorType.badResponse:
         errorMessage = _handleStatusCode(dioError.response?.statusCode);
         break;
-      case DioErrorType.other:
-        if (dioError.message.contains('SocketException')) {
-          errorMessage = 'No Internet.';
+      case DioErrorType.unknown:
+
+        if(dioError.error.toString().contains("SocketException")){
+          errorMessage = "No Internet Connection";
           break;
         }
         errorMessage = 'Unexpected error occurred.';

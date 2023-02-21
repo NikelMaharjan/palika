@@ -88,7 +88,6 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
 
                   _padding(label: "Birth Darta Page", isHeading: true ),
 
-
                   gapH10,
 
 
@@ -99,6 +98,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                   _padding(label: "Birth Place"),
 
                   FormBuilderRadioGroup(
+
                       validator: FormBuilderValidators.required(errorText: "Select one option"),
                       name: "birth_place",
                       options: [
@@ -131,35 +131,32 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                     ),
                   ),
 
-
-
                   _padding(label: "Gender"),
 
-                  gapH7,
-                  FormBuilderDropdown(
+
+
+                  FormBuilderRadioGroup(
                     validator: FormBuilderValidators.required(errorText: "Select one option"),
                     name: "gender",
-                    items: genderOptions.map((gender) => DropdownMenuItem(
-                      value: gender,
-                      child: Text('$gender'),
-                    )).toList(),
-                    decoration: InputDecoration(
+                    options: [
+                      FormBuilderFieldOption(value: "male", child: Text("Female"),),
+                      FormBuilderFieldOption(value: "female", child: Text("Female"),),
+                      FormBuilderFieldOption(value: "other", child: Text("Other"),),
 
-                      hintText: "Select Gender",
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-                      errorStyle:  TextStyle(fontSize: 13.sp),
-                      errorBorder:  OutlineInputBorder(
-                        borderSide:  BorderSide(color: Colors.red, width: 0.0),
-                      ),
-                      hintStyle: formHintStyle,
-                      border: const OutlineInputBorder(),
+                    ],
+                    decoration: InputDecoration(
+                      enabledBorder: InputBorder.none,
                     ),
                   ),
+
+
+
 
                   gapH10,
 
 
                   _padding(label: "Ethinicity"),
+
                   gapH7,
 
 
@@ -265,6 +262,8 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
 
                   _padding(label: "Select Location"),
 
+                  gapH7,
+
 
 
 
@@ -304,7 +303,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -344,7 +343,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -394,7 +393,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
 
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -443,22 +442,31 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
 
 
 
-                  gapH10,
+                  gapH12,
 
+                  // _padding(label: "Disability"),
+                  //
+                  //
+                  // FormBuilderRadioGroup(
+                  //   validator: FormBuilderValidators.required(errorText: "Select one option"),
+                  //     name: "is_disable",
+                  //     options: [
+                  //       FormBuilderFieldOption(value: true, child: Text("Yes"),),
+                  //       FormBuilderFieldOption(value: false, child: Text("No"),),
+                  //     ],
+                  //   decoration: InputDecoration(
+                  //     enabledBorder: InputBorder.none,
+                  //   ),
+                  // ),
 
-                  _padding(label: "Disability"),
-
-
-                  FormBuilderRadioGroup(
-                    validator: FormBuilderValidators.required(errorText: "Select one option"),
+                  FormBuilderSwitch(
                       name: "is_disable",
-                      options: [
-                        FormBuilderFieldOption(value: true, child: Text("Yes"),),
-                        FormBuilderFieldOption(value: false, child: Text("No"),),
-                      ],
-                    decoration: InputDecoration(
-                      enabledBorder: InputBorder.none,
-                    ),
+                      initialValue: false,
+                      activeColor: primaryColor,
+                      decoration: InputDecoration(
+                          enabledBorder: InputBorder.none,
+                      ),
+                      title: _padding(label: "Disability")
                   ),
 
                   gapH10,
@@ -744,7 +752,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                             },
                           ),
 
-                          gapH10,
+                          gapH7,
 
 
                           DropdownSearch<Districtt>(
@@ -779,7 +787,8 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                             },
                           ),
 
-                          gapH10,
+                          gapH7,
+
 
 
                           DropdownSearch<Municipalities> (
@@ -820,7 +829,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
 
                           ),
 
-                          gapH10,
+                          gapH7,
 
 
                           DropdownSearch<Wardd>(
@@ -860,7 +869,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                           ),
 
 
-                          gapH10,
+                          gapH12,
 
 
 
@@ -1212,7 +1221,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                           },
                         ),
 
-                        gapH10,
+                        gapH7,
 
 
 
@@ -1267,7 +1276,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
                           },
                         ),
 
-                        gapH10,
+                        gapH7,
 
 
                         DropdownSearch<Municipalities>(
@@ -1326,7 +1335,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
 
                         ),
 
-                        gapH10,
+                        gapH7,
 
 
                         DropdownSearch<Wardd>(
@@ -1371,7 +1380,7 @@ class _BirthPageState extends ConsumerState<BirthDartaPage> {
 
                         ),
 
-                        gapH10,
+                        gapH12,
 
 
                         Row(

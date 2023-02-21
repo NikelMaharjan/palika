@@ -116,176 +116,172 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
                   _padding(label: "Office Address"),
 
 
-                  Column(
-                    children: [
-                      DropdownSearch<Provincee>(
-                        validator: dropDownValidation,
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                              "https://test.digitalpalika.org/api/provinces",
-                            );
-                            final models = (response.data as List).map((e) => Provincee.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
+                  DropdownSearch<Provincee>(
+                    validator: dropDownValidation,
+                    asyncItems: (String filter) async {
+                      try{
+                        final response = await Dio().get(
+                          "https://test.digitalpalika.org/api/provinces",
+                        );
+                        final models = (response.data as List).map((e) => Provincee.fromJson(e)).toList();
+                        return models;
+                      }on DioError catch(err){
+                        throw 'something went wrong';
+                      }
 
-                        },
+                    },
 
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("Province"),
-                            fillColor: primaryColor,
-                            hintText: "select province",
-                          ),
-                        ),
-
-                        onChanged: (Provincee? data) {
-                          print("Province id is ${data!.id}");
-
-                          setState(() {
-                            pzoneO = data;
-                          });
-                        },
+                    dropdownDecoratorProps: DropDownDecoratorProps(
+                      dropdownSearchDecoration: InputDecoration(
+                        floatingLabelStyle: TextStyle(color: primaryColor),
+                        contentPadding: EdgeInsets.all(0),
+                        label: Text("Province"),
+                        fillColor: primaryColor,
+                        hintText: "select province",
                       ),
+                    ),
 
-                      gapH10,
+                    onChanged: (Provincee? data) {
+                      print("Province id is ${data!.id}");
 
-
-                      DropdownSearch<Districtt>(
-
-                        validator: dropDownValidation,
-
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                                "https://test.digitalpalika.org/api/province/${pzoneO.id}/districts"
-                            );
-                            final models = (response.data as List).map((e) => Districtt.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("District"),
-                            hintText: "select district",
-                          ),
-                        ),
-                        enabled: pzoneO.en_name.isEmpty ? false : true,
-                        onChanged: (Districtt? data) {
-                          print("District id is ${data!.id}");
-
-                          setState(() {
-                            pdistrictO = data;
-                          });
-                        },
-                      ),
-
-                      gapH10,
-
-
-                      DropdownSearch<Municipalities>(
-
-                        validator: dropDownValidation,
-
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                                "https://test.digitalpalika.org/api/district/${pdistrictO.id}/muncipalities"
-                            );
-                            final models = (response.data as List).map((e) => Municipalities.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("Municipality"),
-                            hintText: "select municipality",
-                          ),
-                        ),
-
-                        enabled: pdistrictO.np_name.isEmpty ? false : true,
-
-                        onChanged: (Municipalities? data) {
-                          print("Municipality district id is ${data!.district_id}");
-
-                          setState(() {
-                            pMuniciO = data;
-                          });
-
-
-
-
-
-                        },
-
-
-                      ),
-
-                      gapH10,
-
-
-                      DropdownSearch<Wardd>(
-
-
-                        validator: dropDownValidation,
-
-
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                              // "https://test.digitalpalika.org/api/muncipality/1/wards"
-
-                                "https://test.digitalpalika.org/api/muncipality/${pMuniciO.id}/wards"
-                            );
-                            final models = (response.data as List).map((e) => Wardd.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("Ward"),
-                            hintText: "Select ward number",
-                          ),
-                        ),
-
-                        enabled: pMuniciO.np_name.isEmpty ? false : true,
-
-
-                        onChanged: (Wardd? data) {
-                          print("ward id is ${pWardO.id}");
-                          pWardO = data!;
-                        },
-
-                      ),
-
-                      gapH10,
-                    ],
+                      setState(() {
+                        pzoneO = data;
+                      });
+                    },
                   ),
+
+                  gapH7,
+
+
+                  DropdownSearch<Districtt>(
+
+                    validator: dropDownValidation,
+
+                    asyncItems: (String filter) async {
+                      try{
+                        final response = await Dio().get(
+                            "https://test.digitalpalika.org/api/province/${pzoneO.id}/districts"
+                        );
+                        final models = (response.data as List).map((e) => Districtt.fromJson(e)).toList();
+                        return models;
+                      }on DioError catch(err){
+                        throw 'something went wrong';
+                      }
+
+
+                    },
+
+                    dropdownDecoratorProps: DropDownDecoratorProps(
+                      dropdownSearchDecoration: InputDecoration(
+                        floatingLabelStyle: TextStyle(color: primaryColor),
+                        contentPadding: EdgeInsets.all(0),
+                        label: Text("District"),
+                        hintText: "select district",
+                      ),
+                    ),
+                    enabled: pzoneO.en_name.isEmpty ? false : true,
+                    onChanged: (Districtt? data) {
+                      print("District id is ${data!.id}");
+
+                      setState(() {
+                        pdistrictO = data;
+                      });
+                    },
+                  ),
+
+                  gapH7,
+
+
+                  DropdownSearch<Municipalities>(
+
+                    validator: dropDownValidation,
+
+                    asyncItems: (String filter) async {
+                      try{
+                        final response = await Dio().get(
+                            "https://test.digitalpalika.org/api/district/${pdistrictO.id}/muncipalities"
+                        );
+                        final models = (response.data as List).map((e) => Municipalities.fromJson(e)).toList();
+                        return models;
+                      }on DioError catch(err){
+                        throw 'something went wrong';
+                      }
+
+
+                    },
+
+                    dropdownDecoratorProps: DropDownDecoratorProps(
+                      dropdownSearchDecoration: InputDecoration(
+                        floatingLabelStyle: TextStyle(color: primaryColor),
+                        contentPadding: EdgeInsets.all(0),
+                        label: Text("Municipality"),
+                        hintText: "select municipality",
+                      ),
+                    ),
+
+                    enabled: pdistrictO.np_name.isEmpty ? false : true,
+
+                    onChanged: (Municipalities? data) {
+                      print("Municipality district id is ${data!.district_id}");
+
+                      setState(() {
+                        pMuniciO = data;
+                      });
+
+
+
+
+
+                    },
+
+
+                  ),
+
+                  gapH7,
+
+
+                  DropdownSearch<Wardd>(
+
+
+                    validator: dropDownValidation,
+
+
+                    asyncItems: (String filter) async {
+                      try{
+                        final response = await Dio().get(
+                          // "https://test.digitalpalika.org/api/muncipality/1/wards"
+
+                            "https://test.digitalpalika.org/api/muncipality/${pMuniciO.id}/wards"
+                        );
+                        final models = (response.data as List).map((e) => Wardd.fromJson(e)).toList();
+                        return models;
+                      }on DioError catch(err){
+                        throw 'something went wrong';
+                      }
+
+
+                    },
+
+                    dropdownDecoratorProps: DropDownDecoratorProps(
+                      dropdownSearchDecoration: InputDecoration(
+                        floatingLabelStyle: TextStyle(color: primaryColor),
+                        contentPadding: EdgeInsets.all(0),
+                        label: Text("Ward"),
+                        hintText: "Select ward number",
+                      ),
+                    ),
+
+                    enabled: pMuniciO.np_name.isEmpty ? false : true,
+
+
+                    onChanged: (Wardd? data) {
+                      print("ward id is ${pWardO.id}");
+                      pWardO = data!;
+                    },
+
+                  ),
+
+                  gapH12,
 
 
 
@@ -333,7 +329,7 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
                             },
                           ),
 
-                          gapH10,
+                          gapH7,
 
 
                           DropdownSearch<Districtt>(
@@ -372,7 +368,7 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
                             },
                           ),
 
-                          gapH10,
+                          gapH7,
 
 
 
@@ -422,7 +418,7 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
 
                           ),
 
-                          gapH10,
+                          gapH7,
 
 
 
@@ -468,7 +464,7 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
                           ),
 
 
-                          gapH10,
+                          gapH12,
 
 
                           Row(
@@ -561,7 +557,7 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
                             },
                           ),
 
-                          gapH10,
+                          gapH7,
 
                           DropdownSearch<Districtt>(
 
@@ -599,7 +595,7 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
                             },
                           ),
 
-                          gapH10,
+                          gapH7,
 
                           DropdownSearch<Municipalities>(
 
@@ -646,7 +642,7 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
 
                           ),
 
-                          gapH10,
+                          gapH7,
 
                           DropdownSearch<Wardd>(
 
@@ -690,7 +686,7 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
                           ),
 
 
-                          gapH10,
+                          gapH12,
 
 
                           Row(

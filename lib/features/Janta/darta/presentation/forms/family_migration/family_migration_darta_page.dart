@@ -188,7 +188,7 @@ class _FamilyMigrationDartaPageState extends ConsumerState<FamilyMigrationDartaP
                         },
                       ),
 
-                      gapH10,
+                      gapH7,
 
 
 
@@ -232,7 +232,7 @@ class _FamilyMigrationDartaPageState extends ConsumerState<FamilyMigrationDartaP
                         },
                       ),
 
-                      gapH10,
+                      gapH7,
 
 
 
@@ -278,7 +278,7 @@ class _FamilyMigrationDartaPageState extends ConsumerState<FamilyMigrationDartaP
 
                       ),
 
-                      gapH10,
+                      gapH7,
 
 
 
@@ -330,7 +330,7 @@ class _FamilyMigrationDartaPageState extends ConsumerState<FamilyMigrationDartaP
 
 
 
-                  gapH14,
+                  gapH12,
 
                   _padding(label: "Gender"),
 

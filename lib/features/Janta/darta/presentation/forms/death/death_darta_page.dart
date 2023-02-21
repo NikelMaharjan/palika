@@ -189,7 +189,8 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
+
 
 
 
@@ -233,7 +234,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -283,7 +284,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
 
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -329,7 +330,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                   ),
 
 
-                  gapH10,
+                  gapH12,
 
 
 
@@ -511,7 +512,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
 
 
 
-                  _padding(label: "Death Registration Location"),
+                  _padding(label: "Death Location"),
 
                   gapH10,
 
@@ -550,7 +551,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
 
                   DropdownSearch<Districtt>(
 
@@ -588,7 +589,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
                   DropdownSearch<Municipalities>(
@@ -632,7 +633,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
 
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -679,7 +680,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
 
 
 
-                  gapH14,
+                  gapH12,
 
 
                   Row(
@@ -872,7 +873,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -912,7 +913,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
                   DropdownSearch<Municipalities>(
@@ -956,7 +957,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
 
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -1003,7 +1004,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
 
 
 
-                  gapH14,
+                  gapH12,
 
 
 
@@ -1127,7 +1128,6 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     ],
                   ),
 
-                  gapH10,
 
 
 
@@ -1165,7 +1165,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
                   DropdownSearch<Districtt>(
@@ -1204,7 +1204,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     },
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -1254,7 +1254,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
 
                   ),
 
-                  gapH10,
+                  gapH7,
 
 
 
@@ -1301,7 +1301,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
 
 
 
-                  gapH10,
+                  gapH12,
 
 
                   _padding(label: "Witness Details"),
@@ -1374,7 +1374,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                             },
                           ),
 
-                          gapH10,
+                          gapH7,
 
 
 
@@ -1418,7 +1418,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                             },
                           ),
 
-                          gapH10,
+                          gapH7,
 
 
 
@@ -1468,7 +1468,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
 
                           ),
 
-                          gapH10,
+                          gapH7,
 
 
 
@@ -1515,7 +1515,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                           ),
 
 
-                          gapH16,
+                          gapH12,
 
 
 

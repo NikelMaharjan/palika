@@ -2,10 +2,10 @@
 
 
 import 'dart:io';
-import 'package:dio/dio.dart';
 import 'dart:developer' as logDev;
 import 'package:palikaa/api_exceptions.dart';
-import 'package:palikaa/export_pages.dart';
+import 'package:dio/dio.dart';
+
 
 
 class DartaServices {
@@ -37,7 +37,9 @@ class DartaServices {
       final response =  await dio.post("https://test.digitalpalika.org/api/notice/birth", data: data,
           options: Options(headers: {
         HttpHeaders.authorizationHeader: 'Bearer 81|oPlfTAFnTEwdLEGLQX7M08gKlrDOGgNdPG4QG7dN',
-        Headers.acceptHeader : 'application/json'
+            "Accept" : 'application/json',
+            "Content-Type" : 'application/json'
+
       }));
 
       return "success";
@@ -66,7 +68,8 @@ class DartaServices {
       final response =  await dio.post("https://test.digitalpalika.org/api/notice/death", data: data,
           options: Options(headers: {
             "Authorization": 'Bearer 81|oPlfTAFnTEwdLEGLQX7M08gKlrDOGgNdPG4QG7dN',
-            "Accept": 'application/json'
+            "Accept" : 'application/json',
+            "Content-Type" : 'application/json'
           }));
 
       print("Response is $response");
@@ -89,18 +92,18 @@ class DartaServices {
 
   static Future<String> addMigration(Map data) async {
 
-
     final dio = Dio();
 
-     logDev.log("data is $data");
-
+    logDev.log("data is $data");
 
     try{
 
       final response =  await dio.post("https://test.digitalpalika.org/api/notice/migration", data: data,
           options: Options(headers: {
             HttpHeaders.authorizationHeader: 'Bearer 81|oPlfTAFnTEwdLEGLQX7M08gKlrDOGgNdPG4QG7dN',
-            Headers.acceptHeader : 'application/json'
+            "Accept" : 'application/json',
+            "Content-Type" : 'application/json'
+
           }));
 
       return "success";
@@ -132,7 +135,9 @@ class DartaServices {
           },
           options: Options(headers: {
             HttpHeaders.authorizationHeader: 'Bearer 81|oPlfTAFnTEwdLEGLQX7M08gKlrDOGgNdPG4QG7dN',
-            Headers.acceptHeader : 'application/json'
+            "Accept" : 'application/json',
+            "Content-Type" : 'application/json'
+
           }));
 
 
