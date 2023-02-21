@@ -29,7 +29,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
         GoRoute(
             path: '/',
             name: AppRoute.home.name,
-            // builder: (context, state) => KarmachariDartaPage(),
+        //    builder: (context, state) => MigrationDartaPage(),
              builder: (context, state) => HomeScreen(),
 
             routes: [

@@ -43,7 +43,7 @@ class AuthService {
 
     on DioError catch (err){
 
-      return err.message;
+      return DioException.fromDioError(err).errorMessage ;
     }
 
 

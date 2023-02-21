@@ -46,6 +46,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   animations: ^2.0.3
   dio: ^4.0.6
+
   flutter_screenutil: ^5.5.3+2
   google_maps_flutter: ^2.2.1
   flutter_polyline_points: ^1.0.0

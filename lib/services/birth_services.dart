@@ -58,16 +58,18 @@ class DartaServices {
 
     final dio = Dio();
 
-  //   logDev.log("data is $data");
+    logDev.log("data is $data");
 
 
     try{
 
       final response =  await dio.post("https://test.digitalpalika.org/api/notice/death", data: data,
           options: Options(headers: {
-            HttpHeaders.authorizationHeader: 'Bearer 81|oPlfTAFnTEwdLEGLQX7M08gKlrDOGgNdPG4QG7dN',
-            Headers.acceptHeader : 'application/json'
+            "Authorization": 'Bearer 81|oPlfTAFnTEwdLEGLQX7M08gKlrDOGgNdPG4QG7dN',
+            "Accept": 'application/json'
           }));
+
+      print("Response is $response");
 
       return "success";
 
@@ -106,7 +108,7 @@ class DartaServices {
     }
     on DioError catch(err) {
 
-      //print(err.response!.data['errors']);
+      print(err.response!.data);
       return DioException.fromDioError(err).errorMessage ;
 
     }
@@ -194,13 +196,14 @@ class DartaServices {
           options: Options(headers: {
             'Authorization': 'Bearer 81|oPlfTAFnTEwdLEGLQX7M08gKlrDOGgNdPG4QG7dN',
             'Accept' : 'application/json',
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'application/json',
+            'Accept-Encoding': 'gzip, deflate, br',
 
             // HttpHeaders.authorizationHeader: 'Bearer 81|oPlfTAFnTEwdLEGLQX7M08gKlrDOGgNdPG4QG7dN',
             // Headers.acceptHeader : 'application/json',
           }));
 
-      print("Response is $response");
+    //  print("Response is $response");
 
       return "success";
 
@@ -209,12 +212,25 @@ class DartaServices {
     on DioError catch(err) {
 
 
-      print(err.response);
+     // print(err.response);
+
+     // print("error is $err");
 
 
-      //print(err.response!.data['message']);
+     // return err.toString();
 
-      return DioException.fromDioError(err).errorMessage ;
+    //  print("Error is $err");
+
+
+    //  return err.message.toString();
+
+
+
+    print("Error is ${ DioException.fromDioError(err).errorMessage}");
+
+     return DioException.fromDioError(err).errorMessage ;
+
+     // return "sadsads";
 
     }
 

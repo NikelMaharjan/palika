@@ -293,437 +293,449 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
 
                   _padding(label: "Current Address"),
 
-
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      DropdownSearch<Provincee>(
-                        validator: dropDownValidation,
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                              "https://test.digitalpalika.org/api/provinces",
-                            );
-                            final models = (response.data as List).map((e) => Provincee.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("Province"),
-                            fillColor: primaryColor,
-                            hintText: "select province",
-                          ),
-                        ),
-
-                        onChanged: (Provincee? data) {
-                          print("Province id is ${data!.id}");
-
-                          setState(() {
-                            pzoneC = data;
-                          });
-                        },
-                      ),
-
-                      gapH10,
-
-
-                      DropdownSearch<Districtt>(
-
-                        validator: dropDownValidation,
-
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                                "https://test.digitalpalika.org/api/province/${pzoneC.id}/districts"
-                            );
-                            final models = (response.data as List).map((e) => Districtt.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("District"),
-                            hintText: "select district",
-                          ),
-                        ),
-                        enabled: pzoneC.en_name.isEmpty ? false : true,
-                        onChanged: (Districtt? data) {
-                          print("District id is ${data!.id}");
-
-                          setState(() {
-                            pdistrictC = data;
-                          });
-                        },
-                      ),
-
-                      gapH10,
-
-
-
-
-                      DropdownSearch<Municipalities>(
-
-                        validator: dropDownValidation,
-
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                                "https://test.digitalpalika.org/api/district/${pdistrictC.id}/muncipalities"
-                            );
-                            final models = (response.data as List).map((e) => Municipalities.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("Municipality"),
-                            hintText: "select municipality",
-                          ),
-                        ),
-
-                        enabled: pdistrictC.np_name.isEmpty ? false : true,
-
-                        onChanged: (Municipalities? data) {
-                          print("Municipality district id is ${data!.district_id}");
-
-                          setState(() {
-                            pMuniciC = data;
-                          });
-
-
-
-
-
-                        },
-
-
-                      ),
-
-                      gapH10,
-
-
-
-                      DropdownSearch<Wardd>(
-
-
-                        validator: dropDownValidation,
-
-
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                              // "https://test.digitalpalika.org/api/muncipality/1/wards"
-
-                                "https://test.digitalpalika.org/api/muncipality/${pMuniciC.id}/wards"
-                            );
-                            final models = (response.data as List).map((e) => Wardd.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("Ward"),
-                            hintText: "Select ward number",
-                          ),
-                        ),
-
-                        enabled: pMuniciC.np_name.isEmpty ? false : true,
-
-
-                        onChanged: (Wardd? data) {
-                          print("ward id is ${pWardC.id}");
-                          pWardC = data!;
-                        },
-
-                      ),
-
-
-                      gapH10,
-
-
-                      Row(
-
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
                         children: [
 
-                          Expanded(
-                            child: TextFieldWidget(
-                              name: "current_tole",
-                              labelName: "Tole Name",
-                              hintName: "tole",
-                              validation: "row",
+                          DropdownSearch<Provincee>(
+                            validator: dropDownValidation,
+                            asyncItems: (String filter) async {
+                              try{
+                                final response = await Dio().get(
+                                  "https://test.digitalpalika.org/api/provinces",
+                                );
+                                final models = (response.data as List).map((e) => Provincee.fromJson(e)).toList();
+                                return models;
+                              }on DioError catch(err){
+                                throw 'something went wrong';
+                              }
+
+                            },
+
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                floatingLabelStyle: TextStyle(color: primaryColor),
+                                contentPadding: EdgeInsets.all(0),
+                                label: Text("Province"),
+                                fillColor: primaryColor,
+                                hintText: "select province",
+                              ),
                             ),
+
+                            onChanged: (Provincee? data) {
+                              print("Province id is ${data!.id}");
+
+                              setState(() {
+                                pzoneC = data;
+                              });
+                            },
+                          ),
+
+                          gapH10,
+
+
+                          DropdownSearch<Districtt>(
+
+                            validator: dropDownValidation,
+
+                            asyncItems: (String filter) async {
+                              try{
+                                final response = await Dio().get(
+                                    "https://test.digitalpalika.org/api/province/${pzoneC.id}/districts"
+                                );
+                                final models = (response.data as List).map((e) => Districtt.fromJson(e)).toList();
+                                return models;
+                              }on DioError catch(err){
+                                throw 'something went wrong';
+                              }
+
+
+                            },
+
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                floatingLabelStyle: TextStyle(color: primaryColor),
+                                contentPadding: EdgeInsets.all(0),
+                                label: Text("District"),
+                                hintText: "select district",
+                              ),
+                            ),
+                            enabled: pzoneC.en_name.isEmpty ? false : true,
+                            onChanged: (Districtt? data) {
+                              print("District id is ${data!.id}");
+
+                              setState(() {
+                                pdistrictC = data;
+                              });
+                            },
+                          ),
+
+                          gapH10,
+
+
+
+
+                          DropdownSearch<Municipalities>(
+
+                            validator: dropDownValidation,
+
+                            asyncItems: (String filter) async {
+                              try{
+                                final response = await Dio().get(
+                                    "https://test.digitalpalika.org/api/district/${pdistrictC.id}/muncipalities"
+                                );
+                                final models = (response.data as List).map((e) => Municipalities.fromJson(e)).toList();
+                                return models;
+                              }on DioError catch(err){
+                                throw 'something went wrong';
+                              }
+
+
+                            },
+
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                floatingLabelStyle: TextStyle(color: primaryColor),
+                                contentPadding: EdgeInsets.all(0),
+                                label: Text("Municipality"),
+                                hintText: "select municipality",
+                              ),
+                            ),
+
+                            enabled: pdistrictC.np_name.isEmpty ? false : true,
+
+                            onChanged: (Municipalities? data) {
+                              print("Municipality district id is ${data!.district_id}");
+
+                              setState(() {
+                                pMuniciC = data;
+                              });
+
+
+
+
+
+                            },
+
+
+                          ),
+
+                          gapH10,
+
+
+
+                          DropdownSearch<Wardd>(
+
+
+                            validator: dropDownValidation,
+
+
+                            asyncItems: (String filter) async {
+                              try{
+                                final response = await Dio().get(
+                                  // "https://test.digitalpalika.org/api/muncipality/1/wards"
+
+                                    "https://test.digitalpalika.org/api/muncipality/${pMuniciC.id}/wards"
+                                );
+                                final models = (response.data as List).map((e) => Wardd.fromJson(e)).toList();
+                                return models;
+                              }on DioError catch(err){
+                                throw 'something went wrong';
+                              }
+
+
+                            },
+
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                floatingLabelStyle: TextStyle(color: primaryColor),
+                                contentPadding: EdgeInsets.all(0),
+                                label: Text("Ward"),
+                                hintText: "Select ward number",
+                              ),
+                            ),
+
+                            enabled: pMuniciC.np_name.isEmpty ? false : true,
+
+
+                            onChanged: (Wardd? data) {
+                              print("ward id is ${pWardC.id}");
+                              pWardC = data!;
+                            },
+
                           ),
 
 
-                          Expanded(
-                            child: TextFieldWidget(
-                              name: "current_street_name",
-                              labelName: "Street Name",
-                              hintName: "street",
-                              validation: "row",
-                            ),
-                          ),
+                          gapH10,
 
-                          Expanded(
-                            child: TextFieldWidget(
-                              name: "current_house_no",
-                              labelName: "House No",
-                              hintName: "house no",
-                              validation: "row",
-                              isNumeric: true,
-                            ),
+
+                          Row(
+
+                            children: [
+
+                              Expanded(
+                                child: TextFieldWidget(
+                                  name: "current_tole",
+                                  labelName: "Tole Name",
+                                  hintName: "tole",
+                                  validation: "row",
+                                  isTrue: true,
+                                ),
+                              ),
+
+
+                              Expanded(
+                                child: TextFieldWidget(
+                                  name: "current_street_name",
+                                  labelName: "Street Name",
+                                  hintName: "street",
+                                  validation: "row",
+                                  isTrue: true,
+                                ),
+                              ),
+
+                              Expanded(
+                                child: TextFieldWidget(
+                                  name: "current_house_no",
+                                  labelName: "House No",
+                                  hintName: "house no",
+                                  validation: "row",
+                                  isNumeric: true,
+                                  isTrue: true,
+                                ),
+                              ),
+
+                            ],
                           ),
 
                         ],
-                      )
-
-
-
-
-                    ],
+                      ),
+                    ),
                   ),
+
+
+
 
                   gapH10,
 
                   _padding(label: "Migrated Address"),
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      DropdownSearch<Provincee>(
-                        validator: dropDownValidation,
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                              "https://test.digitalpalika.org/api/provinces",
-                            );
-                            final models = (response.data as List).map((e) => Provincee.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("Province"),
-                            fillColor: primaryColor,
-                            hintText: "select province",
-                          ),
-                        ),
-
-                        onChanged: (Provincee? data) {
-                          print("Province id is ${data!.id}");
-
-                          setState(() {
-                            pzoneM = data;
-                          });
-                        },
-                      ),
-
-                      gapH10,
-
-                      DropdownSearch<Districtt>(
-
-                        validator: dropDownValidation,
-
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                                "https://test.digitalpalika.org/api/province/${pzoneM.id}/districts"
-                            );
-                            final models = (response.data as List).map((e) => Districtt.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("District"),
-                            hintText: "select district",
-                          ),
-                        ),
-                        enabled: pzoneM.en_name.isEmpty ? false : true,
-                        onChanged: (Districtt? data) {
-                          print("District id is ${data!.id}");
-
-                          setState(() {
-                            pdistrictM = data;
-                          });
-                        },
-                      ),
-
-                      gapH10,
-
-                      DropdownSearch<Municipalities>(
-
-                        validator: dropDownValidation,
-
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                                "https://test.digitalpalika.org/api/district/${pdistrictM.id}/muncipalities"
-                            );
-                            final models = (response.data as List).map((e) => Municipalities.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("Municipality"),
-                            hintText: "select municipality",
-                          ),
-                        ),
-
-                        enabled: pdistrictM.np_name.isEmpty ? false : true,
-
-                        onChanged: (Municipalities? data) {
-                          print("Municipality district id is ${data!.district_id}");
-
-                          setState(() {
-                            pMuniciM = data;
-                          });
-
-
-
-
-
-                        },
-
-
-                      ),
-
-                      gapH10,
-
-                      DropdownSearch<Wardd>(
-
-
-                        validator: dropDownValidation,
-
-
-                        asyncItems: (String filter) async {
-                          try{
-                            final response = await Dio().get(
-                              // "https://test.digitalpalika.org/api/muncipality/1/wards"
-
-                                "https://test.digitalpalika.org/api/muncipality/${pMuniciM.id}/wards"
-                            );
-                            final models = (response.data as List).map((e) => Wardd.fromJson(e)).toList();
-                            return models;
-                          }on DioError catch(err){
-                            throw 'something went wrong';
-                          }
-
-
-                        },
-
-                        dropdownDecoratorProps: DropDownDecoratorProps(
-                          dropdownSearchDecoration: InputDecoration(
-                            floatingLabelStyle: TextStyle(color: primaryColor),
-                            contentPadding: EdgeInsets.all(0),
-                            label: Text("Ward"),
-                            hintText: "Select ward number",
-                          ),
-                        ),
-
-                        enabled: pMuniciM.np_name.isEmpty ? false : true,
-
-
-                        onChanged: (Wardd? data) {
-                          print("ward id is ${pWardM.id}");
-                          pWardM = data!;
-                        },
-
-                      ),
-
-
-                      gapH10,
-
-
-                      Row(
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
                         children: [
+                          DropdownSearch<Provincee>(
+                            validator: dropDownValidation,
+                            asyncItems: (String filter) async {
+                              try{
+                                final response = await Dio().get(
+                                  "https://test.digitalpalika.org/api/provinces",
+                                );
+                                final models = (response.data as List).map((e) => Provincee.fromJson(e)).toList();
+                                return models;
+                              }on DioError catch(err){
+                                throw 'something went wrong';
+                              }
 
-                          Expanded(
-                            child: TextFieldWidget(
-                              name: "migrated_tole",
-                              labelName: "Tole Name",
-                              hintName: "tole",
-                              validation: "row",
+                            },
+
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                floatingLabelStyle: TextStyle(color: primaryColor),
+                                contentPadding: EdgeInsets.all(0),
+                                label: Text("Province"),
+                                fillColor: primaryColor,
+                                hintText: "select province",
+                              ),
                             ),
+
+                            onChanged: (Provincee? data) {
+                              print("Province id is ${data!.id}");
+
+                              setState(() {
+                                pzoneM = data;
+                              });
+                            },
+                          ),
+
+                          gapH10,
+
+                          DropdownSearch<Districtt>(
+
+                            validator: dropDownValidation,
+
+                            asyncItems: (String filter) async {
+                              try{
+                                final response = await Dio().get(
+                                    "https://test.digitalpalika.org/api/province/${pzoneM.id}/districts"
+                                );
+                                final models = (response.data as List).map((e) => Districtt.fromJson(e)).toList();
+                                return models;
+                              }on DioError catch(err){
+                                throw 'something went wrong';
+                              }
+
+
+                            },
+
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                floatingLabelStyle: TextStyle(color: primaryColor),
+                                contentPadding: EdgeInsets.all(0),
+                                label: Text("District"),
+                                hintText: "select district",
+                              ),
+                            ),
+                            enabled: pzoneM.en_name.isEmpty ? false : true,
+                            onChanged: (Districtt? data) {
+                              print("District id is ${data!.id}");
+
+                              setState(() {
+                                pdistrictM = data;
+                              });
+                            },
+                          ),
+
+                          gapH10,
+
+                          DropdownSearch<Municipalities>(
+
+                            validator: dropDownValidation,
+
+                            asyncItems: (String filter) async {
+                              try{
+                                final response = await Dio().get(
+                                    "https://test.digitalpalika.org/api/district/${pdistrictM.id}/muncipalities"
+                                );
+                                final models = (response.data as List).map((e) => Municipalities.fromJson(e)).toList();
+                                return models;
+                              }on DioError catch(err){
+                                throw 'something went wrong';
+                              }
+
+
+                            },
+
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                floatingLabelStyle: TextStyle(color: primaryColor),
+                                contentPadding: EdgeInsets.all(0),
+                                label: Text("Municipality"),
+                                hintText: "select municipality",
+                              ),
+                            ),
+
+                            enabled: pdistrictM.np_name.isEmpty ? false : true,
+
+                            onChanged: (Municipalities? data) {
+                              print("Municipality district id is ${data!.district_id}");
+
+                              setState(() {
+                                pMuniciM = data;
+                              });
+
+
+
+
+
+                            },
+
+
+                          ),
+
+                          gapH10,
+
+                          DropdownSearch<Wardd>(
+
+
+                            validator: dropDownValidation,
+
+
+                            asyncItems: (String filter) async {
+                              try{
+                                final response = await Dio().get(
+                                  // "https://test.digitalpalika.org/api/muncipality/1/wards"
+
+                                    "https://test.digitalpalika.org/api/muncipality/${pMuniciM.id}/wards"
+                                );
+                                final models = (response.data as List).map((e) => Wardd.fromJson(e)).toList();
+                                return models;
+                              }on DioError catch(err){
+                                throw 'something went wrong';
+                              }
+
+
+                            },
+
+                            dropdownDecoratorProps: DropDownDecoratorProps(
+                              dropdownSearchDecoration: InputDecoration(
+                                floatingLabelStyle: TextStyle(color: primaryColor),
+                                contentPadding: EdgeInsets.all(0),
+                                label: Text("Ward"),
+                                hintText: "Select ward number",
+                              ),
+                            ),
+
+                            enabled: pMuniciM.np_name.isEmpty ? false : true,
+
+
+                            onChanged: (Wardd? data) {
+                              print("ward id is ${pWardM.id}");
+                              pWardM = data!;
+                            },
+
                           ),
 
 
-                          Expanded(
-                            child: TextFieldWidget(
-                              name: "migrated_street_name",
-                              labelName: "Street Name",
-                              hintName: "street",
-                              validation: "row",
-                            ),
-                          ),
+                          gapH10,
 
-                          Expanded(
-                            child: TextFieldWidget(
-                              name: "migrated_house_no",
-                              labelName: "House Number",
-                              hintName: "house no",
-                              validation: "row",
-                              isNumeric: true,
-                            ),
-                          ),
 
+                          Row(
+                            children: [
+
+                              Expanded(
+                                child: TextFieldWidget(
+                                  name: "migrated_tole",
+                                  labelName: "Tole Name",
+                                  hintName: "tole",
+                                  validation: "row",
+                                  isTrue: true,
+                                ),
+                              ),
+
+
+                              Expanded(
+                                child: TextFieldWidget(
+                                  name: "migrated_street_name",
+                                  labelName: "Street Name",
+                                  hintName: "street",
+                                  validation: "row",
+                                  isTrue: true,
+                                ),
+                              ),
+
+                              Expanded(
+                                child: TextFieldWidget(
+                                  name: "migrated_house_no",
+                                  labelName: "House No",
+                                  hintName: "house no",
+                                  validation: "row",
+                                  isNumeric: true,
+                                  isTrue: true,
+                                ),
+                              ),
+
+                            ],
+                          ),
                         ],
-                      )
-
-
-
-
-                    ],
+                      ),
+                    ),
                   ),
+
+
 
                   gapH10,
 
@@ -862,8 +874,6 @@ class _MigrationDartaPageState extends ConsumerState<MigrationDartaPage> {
 
                         ref.read(loadingProvider.notifier).toggle();
                         Exceptions.successShow(context, "successfully added");
-
-
 
                       }
 

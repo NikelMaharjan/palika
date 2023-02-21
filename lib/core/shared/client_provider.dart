@@ -4,8 +4,8 @@ import '../../export_pages.dart';
 
 
 final clientProvider = Provider((ref) => Dio(BaseOptions(
-    connectTimeout: 10000,
-    receiveTimeout: 10000,
+   // connectTimeout: 10000,
+   // receiveTimeout: 10000,
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
@@ -32,8 +32,8 @@ final authClientProvider = Provider((ref) {
 
 
 final clientProvider1 = Provider((ref) => Dio(BaseOptions(
-    connectTimeout: 15000,
-    receiveTimeout: 15000,
+   // connectTimeout: 15000,
+  //  receiveTimeout: 15000,
     headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
@@ -45,8 +45,8 @@ final clientProvider1 = Provider((ref) => Dio(BaseOptions(
 final authClientProvider1 = Provider((ref) {
 
   return Dio(BaseOptions(
-      connectTimeout: 15000,
-      receiveTimeout: 15000,
+     // connectTimeout: 15000,
+    //  receiveTimeout: 15000,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

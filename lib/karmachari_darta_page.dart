@@ -342,7 +342,7 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
                   ElevatedButton(onPressed:  () async {
 
 
-                    ref.read(loadingProvider.notifier).toggle();
+                 //   ref.read(loadingProvider.notifier).toggle();
                     _formKey.currentState!.save();
                     final formData = _formKey.currentState!.value;
                     final newData = Map.of(formData);
@@ -350,6 +350,10 @@ class _KarmachariDartaPageState extends ConsumerState<KarmachariDartaPage> {
 
 
                     final response = await DartaServices.addkarmachari();
+
+
+
+                  //  print("response is $response");
 
 
 

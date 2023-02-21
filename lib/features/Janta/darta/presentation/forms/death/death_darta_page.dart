@@ -107,7 +107,7 @@ class _DeathDartaPageState extends ConsumerState<DeathDartaPage> {
                     name: "death_full_name_en",
                     labelName: "English Name",
                     validation: "name",
-                    hintName: "English Name",
+                    hintName: "english Name",
                   ),
 
                   TextFieldWidget(

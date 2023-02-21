@@ -11,7 +11,7 @@ class DioException implements Exception {
         errorMessage = 'Request to the server was cancelled.';
         break;
       case DioErrorType.connectTimeout:
-        errorMessage = 'Check your phone data internet';
+        errorMessage = 'Connection timed out.';
         break;
       case DioErrorType.receiveTimeout:
         errorMessage = 'Receiving timeout occurred.';

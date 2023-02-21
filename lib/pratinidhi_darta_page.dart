@@ -366,8 +366,6 @@ class _PratinidhiDartaPageState extends ConsumerState<PratinidhiDartaPage> {
                     validator: FormBuilderValidators.required(),
                     name: 'dp_pratinidhi_profile_pic',
                     maxImages: 1,
-
-
                   ),
 
 
